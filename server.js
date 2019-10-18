@@ -16,10 +16,10 @@ console.log("Server running...")
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
-//ROUTES
+//TEST
 
-api_handler.get_product.dia("tomates")
-
+//api_handler.get_product.dia("galletitas")
+api_handler.get_product.disco("tomate")
 
 app.get("/", function(req, res){
     res.sendFile(__dirname + "/client/index.html");
