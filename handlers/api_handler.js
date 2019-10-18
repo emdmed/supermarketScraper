@@ -13,13 +13,29 @@ const api_handler = {
             const page = await browser.newPage();
             await page.goto(url+product);
 
-            await page.evaluate(()=>{
+            let products_array = await page.evaluate(()=>{
+                let products_array = [];
                 let all_products = document.querySelectorAll(".product")
                 for(let i = 0; i < all_products.length; i++){
-                    let $ = cheerio.load(all_products[i].innerHTML);
-                    console.log(all_products[i].innerHTML)
+                    //console.log(all_products[i].innerHTML)
+                    products_array.push(all_products[i].innerHTML);
                 }
+
+                console.log(products_array);
+                return products_array
             })
+
+            //input to cheerio
+            console.log("booting cheerio...")
+
+            for(let p = 0; p < products_array.length; p++){
+                let $ = cheerio.load(products_array[0]);
+
+                console.log($(".best-price").text());
+            }
+
+         
+            
 
 
             //ONLY CHEERIO
@@ -53,6 +69,8 @@ const api_handler = {
         }
     }
 }
+
+
 
 
 
