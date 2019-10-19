@@ -5,6 +5,7 @@ $("#buscar_btn").click(function(){
     $("#loading").show();
 
     console.log("run post request");
+    $(this).attr("disabled", true)
 
     $.ajax({
         url: "/get_products",
@@ -16,7 +17,7 @@ $("#buscar_btn").click(function(){
             let product = res;
               $("#loading").hide();
             render_products(product);
-          
+            $(this).attr("disabled", false)
         }
     })
 })
