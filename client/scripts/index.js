@@ -7,14 +7,20 @@ $("#buscar_btn").click(function(){
     console.log("runn post request");
 
     $.ajax({
-        url: "/test",
-        method: "GET",
+        url: "/products_disco",
+        method: "POST",
+        data: {product: product},
         success: function(res){
-            console.log("done");
+
+            console.log(res)
+            let product = res;
+              $("#loading").hide();
+            render_products(product);
+          
         }
     })
 
-
+    /*
     $.ajax({
         url: "/get_products",
         method: "POST",
@@ -28,6 +34,7 @@ $("#buscar_btn").click(function(){
           
         }
     })
+    */
 })
 
 
