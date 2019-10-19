@@ -45,6 +45,7 @@ async function dia_products(product){
             console.log(res)
             let product = res;
             $("#found_dia").show()
+            $("#pending_dia").hide();
             return product;
             /*$("#loading").hide();
             render_products(product);
@@ -69,6 +70,7 @@ async function coto_products(product){
             $(this).attr("disabled", false)
             */
            $("#found_coto").show()
+           $("#pending_coto").hide();
            return product
         }
     })
@@ -90,6 +92,7 @@ async function disco_products(product){
             $(this).attr("disabled", false)
             */
            $("#found_disco").show()
+           $("#pending_disco").hide();
            return product
         }
     })

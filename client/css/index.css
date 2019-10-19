@@ -26,6 +26,10 @@
         position: relative;
         width: 50px;
     }
+
+    #title{
+        margin-top: 50px;
+    }
 }
 /*Desktop*/
 @media only screen and (min-width: 900px) {
@@ -33,6 +37,31 @@
         position: relative;
         width: 50%;
     }
+
+    #loading_image{
+        position: relative;
+        width: 20%;
+        margin-top: 50px;
+     }
+ 
+     #input_product{
+         position: relative;
+         width: 60%;
+     }
+ 
+     .product-card{
+         position: relative;
+         width: 70%;
+     }
+ 
+     .super_img{
+         position: relative;
+         width: 50px;
+     }
+ 
+     #title{
+         margin-top: 50px;
+     }
 }
 
 
