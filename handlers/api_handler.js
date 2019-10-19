@@ -19,7 +19,7 @@ const api_handler = {
             
             const page = await browser.newPage();
             await page.goto(url+product);
-            await page.waitFor(2000)
+            await page.waitForSelector(".product");
 
             let products_array = await page.evaluate(()=>{
                 let products_array = [];
