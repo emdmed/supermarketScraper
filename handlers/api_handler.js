@@ -27,7 +27,7 @@ const api_handler = {
                     products_array.push(all_products[i].innerHTML);
                 }
 
-                console.log(products_array);
+                //console.log(products_array);
                 return products_array
             })
 
@@ -112,7 +112,7 @@ const api_handler = {
                 //products.push(item);
                 filter_undefined(item, products);
             }
-
+            console.log(products)
             return products
 
         },
@@ -189,7 +189,7 @@ const api_handler = {
                 filter_undefined(item, products);
             }
 
-            //console.log(products)
+            console.log(products)
             return products;
             
         }
