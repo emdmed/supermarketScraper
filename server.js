@@ -65,7 +65,7 @@ app.post("/get_products", async function(req, res){
         console.log(send_object);
 
         res.status(200).send(send_object).end();
-        
+
     }catch(err){
         console.log("Error", err);
         res.status(404).end();
@@ -74,5 +74,5 @@ app.post("/get_products", async function(req, res){
 })
 
 app.get("/", function(req, res){
-    res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+    res.sendFile(__dirname + "/client/index.html");
 })
