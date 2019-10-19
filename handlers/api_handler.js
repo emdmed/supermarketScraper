@@ -1,6 +1,5 @@
 const puppeteer = require("puppeteer");
 const cheerio = require("cheerio");
-const fetch = require("node-fetch");
 
 const api_handler = {
     get_product: {
