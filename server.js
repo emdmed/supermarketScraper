@@ -29,21 +29,33 @@ app.post("/test", async function (req, res){
 });
 
 app.post("/get_products", async function(req, res){
-
-    try{
-            
+    
         let product = req.body.product;
         console.log("RUNNING")
 
-        let dia = await api_handler.get_product.dia(product);
-        await dia;
-        console.log(dia);
-        let coto = await api_handler.get_product.coto(product);
-        await coto
-        console.log(coto)
-        let disco = await api_handler.get_product.disco(product);
-        await disco
-        console.log(disco)
+        try{
+            let dia = await api_handler.get_product.dia(product);
+            await dia;
+            console.log(dia);
+        }catch(err){
+            console.log(err);
+        }
+
+        try{
+            let coto = await api_handler.get_product.coto(product);
+            await coto
+            console.log(coto)
+        }catch(err){
+            console.log(err)
+        }
+
+        try{
+            let disco = await api_handler.get_product.disco(product);
+            await disco
+            console.log(disco)
+        }catch(err){
+            console.log(err)
+        }
 
 
         let send_object = [];
@@ -65,11 +77,6 @@ app.post("/get_products", async function(req, res){
         console.log(send_object);
 
         res.status(200).send(send_object).end();
-
-    }catch(err){
-        console.log("Error", err);
-        res.status(404).end();
-    }
 
 })
 
