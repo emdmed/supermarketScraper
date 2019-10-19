@@ -23,20 +23,24 @@ $("#buscar_btn").click(function(){
 function render_products(products){
 
     $("#product_cards_here").empty();
-    products.forEach(element => {
 
-       
+    //order items by price
+    let ordered_products = products.sort((a, b) => (a.int_price > b.int_price) ? 1 : -1)
+   
 
-       
-            $("#product_cards_here").append(`
-            <div class="card text-center">
-                <h5>${element.name}</h5>
-                <p>${element.price}</p>
-                <p>${element.local}</p>
+    ordered_products.forEach(element => {  
+        console.log(element.int_price);
+        $("#product_cards_here").append(`
+            <div class="card text-center product-card mx-auto">
                 <div class="card-body text-center">
-                    <img src="${element.image}">
+                    <h5>${element.name}</h5>
+                    <p>${element.price}</p>
+                    <p>${element.local}</p>
+              
+                    <img class="product-image" src="${element.image}">
                 </div>
             </div>
+            <br>
         `)
         
       

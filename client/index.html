@@ -15,18 +15,24 @@
 </head>
 <body >
     <div class="container">
-        <input type="text" placeholder="producto" id="input_product">
-        <button class="btn btn-primary" id="buscar_btn">Buscar</button>
+        <h1 class="text-center">Tobara.com</h1>
+        <br>
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" aria-label="Recipient's username" aria-describedby="button-addon2" placeholder="Buscar producto..." id="input_product">
+            <div class="input-group-append">
+                <button class="btn btn-secondary" type="button" id="buscar_btn">Buscar</button>
+            </div>
+        </div>
     </div>
 
     <div class="container text-center" id="loading" style="display: none;">
 
-        <img src="https://media.giphy.com/media/3o7WIuUib37DlSag8w/giphy.gif">
+        <img id="loading_image" src="./images/food-basket.png">
         <h5>Buscando productos...</h5>
 
     </div>
 
-    <div class="container" id="product_cards_here">
+    <div class="container text-center" id="product_cards_here">
 
     </div>
 

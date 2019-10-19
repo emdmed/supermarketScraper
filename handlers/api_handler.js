@@ -33,18 +33,19 @@ const api_handler = {
             for(let p = 0; p < products_array.length; p++){
                 let $ = cheerio.load(products_array[p]);
 
+                let price = $(".best-price").text();
+                let int_price = parseFloat(remove_sign = price.replace("$", "").replace(",", "."));
+
                 let item = {
                     name: $(".ellip").text(),
                     price: $(".best-price").text(),
                     image: $(".productImage").find("img").attr("src"),
-                    int_price: function(){
-                        let remove_sign = this.price.replace("$", "").replace(",", ".");
-                        return parseFloat(remove_sign);
-                    },
+                    int_price: int_price,
                     local: "Supermercado Día"
                 }
 
-                products.push(item);
+                //products.push(item);
+                filter_undefined(item, products);
             }
 
          
@@ -101,7 +102,8 @@ const api_handler = {
                     local: "Supermercado Coto"
                 }
 
-                products.push(item);
+                //products.push(item);
+                filter_undefined(item, products);
             }
 
             return products
@@ -167,17 +169,27 @@ const api_handler = {
                 let item = {
                     name: $(".grilla-producto-descripcion").text(),
                     price: final,
+                    int_price: parseFloat(final.replace(",", ".").replace("$", "")),
                     image: $(".centered-image.small.lazy").attr("data-original"),
                     local: "Supermercado Disco"
                 }  
 
-                products.push(item);
+                //products.push(item);
+                filter_undefined(item, products);
             }
 
             //console.log(products)
             return products;
             
         }
+    }
+}
+
+function filter_undefined(item, products){
+    if(item.name === undefined || item.name === "" || item.price === undefined ||item.price === "$undefined"){
+        console.log("undefined product price or name")
+    } else {
+        products.push(item);
     }
 }
 
