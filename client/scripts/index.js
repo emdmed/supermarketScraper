@@ -1,6 +1,10 @@
 $("#buscar_btn").click(async function(){
     let product = $("#input_product").val();
 
+    $("#found_coto").hide()
+    $("#found_dia").hide()
+    $("#found_disco").hide()
+
     //show loadgin gif 
     $("#loading").show();
     $("#product_cards_here").empty();
