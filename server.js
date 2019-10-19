@@ -73,6 +73,6 @@ app.post("/get_products", async function(req, res){
 
 })
 
-app.get("/", function(req, res){
+app.get("*", function(req, res){
     res.sendFile(__dirname + "/client/index.html");
 })
