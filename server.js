@@ -68,7 +68,7 @@ app.post("/get_products", async function(req, res){
             send_object.push(dia[i]);
         }
 
-        /*
+        
 
         for(let o = 0; o < coto.length; o++){
             send_object.push(coto[o]);
@@ -77,7 +77,7 @@ app.post("/get_products", async function(req, res){
         for(let u = 0; u < disco.length; u++){
             send_object.push(disco[u]);
         }
-        */
+        
     
 
         console.log(send_object);
