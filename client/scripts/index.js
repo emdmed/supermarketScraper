@@ -5,6 +5,16 @@ $("#buscar_btn").click(function(){
     $("#loading").show();
 
     console.log("runn post request");
+
+    $.ajax({
+        url: "/test",
+        method: "GET",
+        success: function(res){
+            console.log("done");
+        }
+    })
+
+
     $.ajax({
         url: "/get_products",
         method: "POST",
