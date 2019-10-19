@@ -29,6 +29,62 @@ app.post("/test", async function (req, res){
 });
 
 
+app.post("/products_dia", function(req, res){
+
+    let product = req.body.product;
+    let dia;
+
+    try{
+        dia = await api_handler.get_product.dia(product);
+        await dia;
+        console.log(dia);
+        res.status(200).send(dia).end();
+    }catch(err){
+        console.log(err);
+        res.status(404).end();
+    }
+    
+
+})
+
+
+app.post("/products_coto", function(req, res){
+
+    let product = req.body.product;
+    let coto;
+
+    try{
+        coto = await api_handler.get_product.coto(product);
+        await coto;
+        res.status(200).send(coto).end();
+    }catch(err){
+        console.log(err);
+        res.status(404).end();
+    }
+    
+
+})
+
+
+app.post("/products_dia", function(req, res){
+
+    let product = req.body.product;
+    let disco;
+
+    try{
+        disco = await api_handler.get_product.disco(product);
+        await disco;
+        console.log(disco);
+        res.status(200).send(disco).end();
+    }catch(err){
+        console.log(err);
+        res.status(404).end();
+    }
+    
+
+})
+
+/*
 app.post("/get_products", async function(req, res){
     
         let product = req.body.product;
@@ -87,6 +143,7 @@ app.post("/get_products", async function(req, res){
         res.status(200).send(send_object).end();
 
 })
+*/
 
 app.get("*", function(req, res){
     res.sendFile(__dirname + "/client/index.html");
