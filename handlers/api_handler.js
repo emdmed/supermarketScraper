@@ -54,7 +54,8 @@ const api_handler = {
                 filter_undefined(item, products);
             }
 
-         
+            
+            await browser.close();
             //console.log(products);
             return products;
         },
@@ -115,7 +116,7 @@ const api_handler = {
                 //products.push(item);
                 filter_undefined(item, products);
             }
-            console.log(products)
+            await browser.close();
             return products
 
         },
@@ -192,7 +193,7 @@ const api_handler = {
                 filter_undefined(item, products);
             }
 
-            console.log(products)
+            await browser.close();
             return products;
             
         }
