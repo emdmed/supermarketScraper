@@ -66,5 +66,5 @@ app.post("/get_products", async function(req, res){
 })
 
 app.get("/", function(req, res){
-    res.sendFile(__dirname + "/client/index.html");
+    res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
 })
