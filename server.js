@@ -33,6 +33,8 @@ app.post("/get_products", async function(req, res){
         let product = req.body.product;
         console.log("RUNNING")
         let dia;
+        let coto;
+        let disco;
 
         try{
             dia = await api_handler.get_product.dia(product);
@@ -42,9 +44,9 @@ app.post("/get_products", async function(req, res){
             console.log(err);
         }
 
-        /*
+        
         try{
-            let coto = await api_handler.get_product.coto(product);
+            coto = await api_handler.get_product.coto(product);
             await coto
             console.log(coto)
         }catch(err){
@@ -52,13 +54,13 @@ app.post("/get_products", async function(req, res){
         }
 
         try{
-            let disco = await api_handler.get_product.disco(product);
+            disco = await api_handler.get_product.disco(product);
             await disco
             console.log(disco)
         }catch(err){
             console.log(err)
         }
-        */
+        
 
         let send_object = [];
 
