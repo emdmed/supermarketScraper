@@ -8,6 +8,8 @@ const api_handler = {
             url = "https://diaonline.supermercadosdia.com.ar/busca/?ft=";
             let products = [];
 
+            console.log("Product Dia: "+product);
+
             //PUPPTEER AND CHEERIO
 
             const browser = await puppeteer.launch({
@@ -59,6 +61,7 @@ const api_handler = {
         coto: async function(product){
             url = `https://www.cotodigital3.com.ar/sitios/cdigi/browse?_dyncharset=utf-8&Dy=1&Ntt=${product}%7C1004&Nty=1&Ntk=All%7Cproduct.sDisp_200&siteScope=ok&_D%3AsiteScope=+&atg_store_searchInput=tomates&idSucursal=200&_D%3AidSucursal=+&search=Ir&_D%3Asearch=+&_DARGS=%2Fsitios%2Fcartridges%2FSearchBox%2FSearchBox.jsp`;
             let products = [];
+            console.log("Product Coto: "+product);
 
             //PUPPTEER AND CHEERIO
             const browser = await puppeteer.launch({
@@ -119,7 +122,7 @@ const api_handler = {
         disco: async function(product){
             url = "https://www.disco.com.ar/Comprar/Home.aspx#_atCategory=false&_atGrilla=true&_query=";
             let products = [];
-
+            console.log("Product Disco: "+product);
             //PUPPTEER AND CHEERIO
 
             const browser = await puppeteer.launch({

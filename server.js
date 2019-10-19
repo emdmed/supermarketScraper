@@ -29,7 +29,7 @@ app.post("/test", async function (req, res){
 });
 
 
-app.post("/products_dia", function(req, res){
+app.post("/products_dia", async function(req, res){
 
     let product = req.body.product;
     let dia;
@@ -48,7 +48,7 @@ app.post("/products_dia", function(req, res){
 })
 
 
-app.post("/products_coto", function(req, res){
+app.post("/products_coto", async function(req, res){
 
     let product = req.body.product;
     let coto;
@@ -66,7 +66,7 @@ app.post("/products_coto", function(req, res){
 })
 
 
-app.post("/products_dia", function(req, res){
+app.post("/products_disco", async function(req, res){
 
     let product = req.body.product;
     let disco;

@@ -21,6 +21,11 @@
         position: relative;
         width: 70%;
     }
+
+    .super_img{
+        position: relative;
+        width: 50px;
+    }
 }
 /*Desktop*/
 @media only screen and (min-width: 900px) {
