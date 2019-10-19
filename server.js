@@ -65,28 +65,24 @@ app.post("/get_products", async function(req, res){
         }
 
         console.log("loop send object");
-        console.log("send object ", send_object)
         
         for(let i = 0; i < 10; i++){
             send_object.push(dia[i]);
         }
         
-        console.log("send object ", send_object)
+        console.log("Dia done")
 
         for(let o = 0; o < 10; o++){
             send_object.push(coto[o]);
         }
         
-        console.log("send object ", send_object)
+        console.log("Coto done")
         
         for(let u = 0; u < 10; u++){
             send_object.push(disco[u]);
         }
         
-        console.log("send object ", send_object)
-    
-
-        console.log(send_object);
+        console.log("Disco done");
 
         res.status(200).send(send_object).end();
 
