@@ -40,7 +40,8 @@ const api_handler = {
                     int_price: function(){
                         let remove_sign = this.price.replace("$", "").replace(",", ".");
                         return parseFloat(remove_sign);
-                    }
+                    },
+                    local: "Supermercado Día"
                 }
 
                 products.push(item);
@@ -95,8 +96,9 @@ const api_handler = {
                 let item = {
                     name: $(".descrip_full").text(),
                     price: "$" + price,
-                    image: $(".productImage").find("img").attr("src"),
-                    int_price: parseFloat(price)
+                    image: $(".atg_store_productImage").find("img").attr("src"),
+                    int_price: parseFloat(price),
+                    local: "Supermercado Coto"
                 }
 
                 products.push(item);
@@ -157,18 +159,19 @@ const api_handler = {
             for(let p = 0; p < products_array.length; p++){
                 let $ = cheerio.load(products_array[p]);
 
+                let full = $(".grilla-producto-precio").text();
+                let cents = $(".grilla-producto-precio").find("span").text();
+                let pre_final = full.replace(cents, "") + "," + cents
+                let final = pre_final.replace(/ /g,'');
+
                 let item = {
                     name: $(".grilla-producto-descripcion").text(),
-                    price: function(){
-                        let full = $(".grilla-producto-precio").text();
-                        let cents = $(".grilla-producto-precio").find("span").text();
-                        let pre_final = full.replace(cents, "") + "," + cents
-                        let final = pre_final.replace(/ /g,'');
-                        console.log(final);
-                        return final
-                    },
-                    image: $(".centered-image.small.lazy").attr("data-original")
+                    price: final,
+                    image: $(".centered-image.small.lazy").attr("data-original"),
+                    local: "Supermercado Disco"
                 }  
+
+                products.push(item);
             }
 
             //console.log(products)
