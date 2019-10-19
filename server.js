@@ -32,9 +32,10 @@ app.post("/get_products", async function(req, res){
     
         let product = req.body.product;
         console.log("RUNNING")
+        let dia;
 
         try{
-            let dia = await api_handler.get_product.dia(product);
+            dia = await api_handler.get_product.dia(product);
             await dia;
             console.log(dia);
         }catch(err){
