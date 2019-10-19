@@ -10,7 +10,7 @@ const api_handler = {
 
             //PUPPTEER AND CHEERIO
 
-            const browser = await puppeteer.launch({headless: true});
+            const browser = await puppeteer.launch({headless: true}, {args: ['--no-sandbox', '--disable-setuid-sandbox']});
             const page = await browser.newPage();
             await page.goto(url+product);
             await page.waitFor(2000)
@@ -114,7 +114,7 @@ const api_handler = {
 
             //PUPPTEER AND CHEERIO
 
-            const browser = await puppeteer.launch({headless: true});
+            const browser = await puppeteer.launch({headless: true}, {args: ['--no-sandbox', '--disable-setuid-sandbox']});
             const page = await browser.newPage();
             //dismiss geoloc request
             await page.evaluateOnNewDocument(function() {
