@@ -4,6 +4,7 @@ $("#buscar_btn").click(function(){
     //show loadgin gif 
     $("#loading").show();
 
+    console.log("runn post request");
     $.ajax({
         url: "/get_products",
         method: "POST",
