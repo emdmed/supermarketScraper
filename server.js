@@ -21,7 +21,7 @@ app.use(bodyParser.json());
 //api_handler.get_product.dia("galletitas")
 //api_handler.get_product.coto("tomate")
 
-app.get("/test", async function (req, res){
+app.post("/test", async function (req, res){
 
     console.log("TEST ROUTE");
     res.status(200).end();
