@@ -24,7 +24,7 @@ app.use(bodyParser.json());
 app.post("/get_products", async function(req, res){
 
     let product = req.body.product;
-    console.log(product)
+    console.log("RUNNING")
 
     let dia = await api_handler.get_product.dia(product);
     await dia;
