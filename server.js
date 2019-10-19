@@ -51,9 +51,11 @@ app.post("/get_products", async function(req, res){
         send_object.push(disco[u]);
     }
 
-    res.end();
+  
 
     console.log(send_object);
+
+    res.status(200).send(send_object).end();
 })
 
 app.get("/", function(req, res){
