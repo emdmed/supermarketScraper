@@ -28,31 +28,6 @@ app.post("/test", async function (req, res){
 
 });
 
-app.post("/products_disco", function(req, res){
-
-    let product = req.body.product;
-    let disco;
-    let send_object = [];
-
-    try{
-        disco = await api_handler.get_product.disco(product);
-        await disco
-        console.log(disco)
-    }catch(err){
-        console.log(err)
-    }
-
-    
-    for(let u = 0; u < disco.length; u++){
-        send_object.push(disco[u]);
-    }
-    
-
-    console.log(send_object);
-
-    res.status(200).send(send_object).end();
-
-})
 
 app.post("/get_products", async function(req, res){
     

@@ -4,23 +4,8 @@ $("#buscar_btn").click(function(){
     //show loadgin gif 
     $("#loading").show();
 
-    console.log("runn post request");
+    console.log("run post request");
 
-    $.ajax({
-        url: "/products_disco",
-        method: "POST",
-        data: {product: product},
-        success: function(res){
-
-            console.log(res)
-            let product = res;
-              $("#loading").hide();
-            render_products(product);
-          
-        }
-    })
-
-    /*
     $.ajax({
         url: "/get_products",
         method: "POST",
@@ -34,7 +19,6 @@ $("#buscar_btn").click(function(){
           
         }
     })
-    */
 })
 
 
