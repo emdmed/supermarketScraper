@@ -54,7 +54,6 @@ app.post("/get_products", async function(req, res){
             console.log(err)
         }
 
-        /*
         try{
             disco = await api_handler.get_product.disco(product);
             await disco
@@ -62,7 +61,6 @@ app.post("/get_products", async function(req, res){
         }catch(err){
             console.log(err)
         }
-        */
 
      
         
@@ -74,10 +72,10 @@ app.post("/get_products", async function(req, res){
             send_object.push(coto[o]);
         }
 
-        /*
+        
         for(let u = 0; u < disco.length; u++){
             send_object.push(disco[u]);
-        }*/
+        }
         
     
 
