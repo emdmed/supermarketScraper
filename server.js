@@ -65,18 +65,18 @@ app.post("/get_products", async function(req, res){
         }
 
      
-        /*
-        for(let i = 0; i < dia.length; i++){
+        
+        for(let i = 0; i < 10; i++){
             send_object.push(dia[i]);
         }
-        */
+        
 
-        for(let o = 0; o < coto.length; o++){
+        for(let o = 0; o < 10; o++){
             send_object.push(coto[o]);
         }
         
         
-        for(let u = 0; u < disco.length; u++){
+        for(let u = 0; u < 10; u++){
             send_object.push(disco[u]);
         }
         
