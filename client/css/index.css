@@ -12,6 +12,7 @@ body{
        position: relative;
        width: 50%;
        margin-top: 50px;
+       margin-bottom: 10px;
     }
 
     #input_product{
@@ -21,7 +22,7 @@ body{
 
     .product-card{
         position: relative;
-        width: 70%;
+        min-width: 200px;
     }
 
     .super_img{
@@ -44,6 +45,7 @@ body{
         position: relative;
         width: 20%;
         margin-top: 50px;
+        margin-bottom: 10px;
      }
  
      #input_product{
