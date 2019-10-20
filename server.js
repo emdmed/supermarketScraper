@@ -74,6 +74,11 @@ app.post("/products_disco", async function(req, res){
     try{
         disco = await api_handler.get_product.disco(product);
         await disco;
+
+        if(disco === "timeout"){
+            res.status(200).send("timeout").end();
+        }
+
         console.log(disco);
         res.status(200).send(disco).end();
     }catch(err){

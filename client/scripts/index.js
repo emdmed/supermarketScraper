@@ -5,6 +5,10 @@ $("#buscar_btn").click(async function(){
     $("#found_dia").hide()
     $("#found_disco").hide()
 
+    $("#pending_dia").show();
+    $("#pending_coto").show();
+    $("#pending_disco").show();
+
     //show loadgin gif 
     $("#loading").show();
     $("#product_cards_here").empty();
@@ -17,17 +21,23 @@ $("#buscar_btn").click(async function(){
     let coto = await coto_products(product);
     let disco = await disco_products(product);
 
-    for(let d = 0; d < dia.length; d++){
-        all_products.push(dia[d]);
+    if (dia === "timeout" || coto === "timeout" || disco === "timeout"){
+
+    } else {
+
+        for(let d = 0; d < dia.length; d++){
+            all_products.push(dia[d]);
+        }
+    
+        for(let c = 0; c < coto.length; c++){
+            all_products.push(coto[c]);
+        }
+    
+        for(let i = 0; i < disco.length; i++){
+            all_products.push(disco[i]);
+        }
     }
 
-    for(let c = 0; c < coto.length; c++){
-        all_products.push(coto[c]);
-    }
-
-    for(let i = 0; i < disco.length; i++){
-        all_products.push(disco[i]);
-    }
 
     render_products(all_products);
 

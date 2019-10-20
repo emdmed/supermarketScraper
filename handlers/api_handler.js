@@ -1,6 +1,6 @@
 const puppeteer = require("puppeteer");
 const cheerio = require("cheerio");
-//new stack
+
 
 const api_handler = {
     get_product: {
@@ -16,7 +16,6 @@ const api_handler = {
                 headless: true,
                 args: ['--no-sandbox', '--disable-setuid-sandbox'],
             });
-            
             const page = await browser.newPage();
             await page.goto(url+product);
             await page.waitForSelector(".product");
@@ -130,6 +129,7 @@ const api_handler = {
                 headless: true,
                 args: ['--no-sandbox', '--disable-setuid-sandbox'],
             });
+
             
             const page = await browser.newPage();
             //dismiss geoloc request
@@ -154,7 +154,7 @@ const api_handler = {
              
             await page.goto(url+product);
       
-            await page.waitForSelector(".grilla-producto-container");
+            await page.waitForSelector("#product-list");
 
             let products_array = await page.evaluate(()=>{
                 let products_array = [];
