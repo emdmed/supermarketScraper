@@ -8,6 +8,16 @@ body{
         width: 50%;
     }
 
+    #top_container{
+        background-image: url("../images/milky-way-2695569_1920.jpg");
+        width: 100%;
+        height: auto;
+        background-size: cover;
+    
+
+        color: white;
+    }
+
     #loading_image{
        position: relative;
        width: 50%;
@@ -31,7 +41,13 @@ body{
     }
 
     #title{
-        margin-top: 50px;
+        position: relative;
+        top: 10px;
+        font-weight: bold;
+    }
+
+    #search_bar{
+        padding-bottom: 20px;
     }
 }
 /*Desktop*/
@@ -39,6 +55,15 @@ body{
     .product-image{
         position: relative;
         width: 40%;
+    }
+
+    #top_container{
+        background-image: url("../images/milky-way-2695569_1920.jpg");
+        width: 100%;
+        height: auto;
+        background-size: cover;
+
+        color: white;
     }
 
     #loading_image{
@@ -64,8 +89,18 @@ body{
      }
  
      #title{
-         margin-top: 50px;
+        position: relative;
+        top: 20px;
+        font-weight: bold;
      }
+
+
+     #search_bar{
+        padding-bottom: 20px;
+        max-width: 50%;
+        }
+
+
 }
 
 

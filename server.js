@@ -2,9 +2,7 @@
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
-const fs = require("fs");
 const api_handler = require("./handlers/api_handler");
-
 
 const server = require("http").createServer(app);
 
