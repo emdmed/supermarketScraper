@@ -26,7 +26,6 @@ const dia = {
                 })
     
                 //input html to Cheerio
-
                 for(let p = 0; p < products_array.length; p++){
                     let $ = cheerio.load(products_array[p]);
     

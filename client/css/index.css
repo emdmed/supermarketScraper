@@ -32,7 +32,7 @@ body{
 
     .product-card{
         position: relative;
-        min-width: 200px;
+        width: 100%;
     }
 
     .super_img{
