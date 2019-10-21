@@ -23,7 +23,7 @@ app.use(bodyParser.json());
 
 app.post("/test", async function (req, res){
 
-    console.log("TEST ROUTE");
+    //console.log("TEST ROUTE");
     res.status(200).end();
 
 });
@@ -37,7 +37,7 @@ app.post("/products_dia", async function(req, res){
     try{
         dia = await api_handler.get_product.dia(product);
         await dia;
-        console.log(dia);
+        //console.log(dia);
         res.status(200).send(dia).end();
     }catch(err){
         console.log(err);
@@ -79,10 +79,10 @@ app.post("/products_disco", async function(req, res){
             res.status(200).send("timeout").end();
         }
 
-        console.log(disco);
+        //console.log(disco);
         res.status(200).send(disco).end();
     }catch(err){
-        console.log(err);
+        //console.log(err);
         res.status(404).end();
     }
     

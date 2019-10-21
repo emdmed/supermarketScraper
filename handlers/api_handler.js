@@ -8,7 +8,7 @@ const api_handler = {
             url = "https://diaonline.supermercadosdia.com.ar/busca/?ft=";
             let products = [];
 
-            console.log("Product Dia: "+product);
+            //console.log("Product Dia: "+product);
 
             //PUPPTEER AND CHEERIO
 
@@ -33,7 +33,7 @@ const api_handler = {
             })
 
             //input to cheerio
-            console.log("booting cheerio...")
+            //console.log("booting cheerio...")
 
             for(let p = 0; p < products_array.length; p++){
                 let $ = cheerio.load(products_array[p]);
@@ -61,7 +61,7 @@ const api_handler = {
         coto: async function(product){
             url = `https://www.cotodigital3.com.ar/sitios/cdigi/browse?_dyncharset=utf-8&Dy=1&Ntt=${product}%7C1004&Nty=1&Ntk=All%7Cproduct.sDisp_200&siteScope=ok&_D%3AsiteScope=+&atg_store_searchInput=tomates&idSucursal=200&_D%3AidSucursal=+&search=Ir&_D%3Asearch=+&_DARGS=%2Fsitios%2Fcartridges%2FSearchBox%2FSearchBox.jsp`;
             let products = [];
-            console.log("Product Coto: "+product);
+            //console.log("Product Coto: "+product);
 
             //PUPPTEER AND CHEERIO
             const browser = await puppeteer.launch({
@@ -78,7 +78,7 @@ const api_handler = {
                 let all_products = document.querySelectorAll(".clearfix")
                 //console.log(all_products)
                 for(let i = 0; i < all_products.length; i++){
-                    console.log(all_products[i].innerHTML)
+                    //console.log(all_products[i].innerHTML)
                     products_array.push(all_products[i].innerHTML);
                 }
 
@@ -88,7 +88,7 @@ const api_handler = {
             //input to cheerio
 
             //console.log(products_array); 
-            console.log("booting cheerio...")
+            //console.log("booting cheerio...")
 
             for(let p = 0; p < products_array.length; p++){
                 let $ = cheerio.load(products_array[p]);
@@ -122,7 +122,7 @@ const api_handler = {
         disco: async function(product){
             url = "https://www.disco.com.ar/Comprar/Home.aspx#_atCategory=false&_atGrilla=true&_query=";
             let products = [];
-            console.log("Product Disco: "+product);
+            //console.log("Product Disco: "+product);
             //PUPPTEER AND CHEERIO
 
             const browser = await puppeteer.launch({
@@ -171,7 +171,7 @@ const api_handler = {
 
             //input to cheerio
  
-            console.log("booting cheerio...")
+            //console.log("booting cheerio...")
 
             for(let p = 0; p < products_array.length; p++){
                 let $ = cheerio.load(products_array[p]);
@@ -202,7 +202,7 @@ const api_handler = {
 
 function filter_undefined(item, products){
     if(item.name === undefined || item.name === "" || item.price === undefined ||item.price === "$undefined"){
-        console.log("undefined product price or name")
+        //console.log("undefined product price or name")
     } else {
         products.push(item);
     }
