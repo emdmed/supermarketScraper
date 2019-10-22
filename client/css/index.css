@@ -18,9 +18,14 @@ body{
         color: white;
     }
 
+    #loading_gif{
+            width: 20%;
+    }
+
     #loading_image{
        position: relative;
        width: 30%;
+       
        margin-top: 50px;
        margin-bottom: 10px;
     }
