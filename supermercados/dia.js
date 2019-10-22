@@ -31,13 +31,15 @@ const dia = {
     
                     let price = $(".best-price").text();
                     let int_price = parseFloat(remove_sign = price.replace("$", "").replace(",", "."));
+                    let url_name = $(".ellip").text().replace(/ /g, "_");
     
                     let item = {
                         name: $(".ellip").text(),
                         price: $(".best-price").text(),
                         image: $(".productImage").find("img").attr("src"),
                         int_price: int_price,
-                        local: "Supermercado Día"
+                        local: "Supermercado Día",
+                        url_name
                     }
 
                     filter_undefined(item, products);

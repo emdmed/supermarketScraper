@@ -57,13 +57,15 @@ const disco = {
             let cents = $(".grilla-producto-precio").find("span").text();
             let pre_final = full.replace(cents, "") + "," + cents
             let final = pre_final.replace(/ /g,'');
+            let url_name = $$(".grilla-producto-descripcion").text().replace(/ /g, "_");
 
             let item = {
                 name: $(".grilla-producto-descripcion").text(),
                 price: final,
                 int_price: parseFloat(final.replace(",", ".").replace("$", "")),
                 image: $(".centered-image.small.lazy").attr("data-original"),
-                local: "Supermercado Disco"
+                local: "Supermercado Disco",
+                url_name
             }  
 
             filter_undefined(item, products);

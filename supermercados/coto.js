@@ -32,13 +32,15 @@ const coto = {
             let sanitize1 = raw_price.replace(/PRECIOCONTADO/g, "")
             let sanitize2 = sanitize1.split("$")
             let price = sanitize2[1]
+            let url_name = $(".descrip_full").text().replace(/ /g, "_");
             
             let item = {
                 name: $(".descrip_full").text(),
                 price: "$" + price,
                 image: $(".atg_store_productImage").find("img").attr("src"),
                 int_price: parseFloat(price),
-                local: "Supermercado Coto"
+                local: "Supermercado Coto",
+                url_name
             }
 
             filter_undefined(item, products);
