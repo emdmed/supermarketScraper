@@ -36,6 +36,7 @@ const disco = {
         await page.goto(url+product);
   
         await page.waitForSelector("#product-list");
+        await page.waitForSelector(".grilla-producto-container");
 
         let products_array = await page.evaluate(()=>{
             let products_array = [];

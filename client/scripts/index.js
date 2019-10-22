@@ -38,8 +38,10 @@ $("#buscar_btn").click(async function(){
         }
     }
 
+    //order items by price
+    let ordered_products = all_products.sort((a, b) => (a.int_price > b.int_price) ? 1 : -1)
 
-    render_products(all_products);
+    render_10_products(ordered_products);
 
     $("#loading").hide();
     $(this).attr("disabled", false);
@@ -112,13 +114,9 @@ async function disco_products(product){
 
 
 function render_products(products){
-
-  
-
     //order items by price
     let ordered_products = products.sort((a, b) => (a.int_price > b.int_price) ? 1 : -1)
    
-
     ordered_products.forEach(element => {  
         //console.log(element.int_price);
         $("#product_cards_here").append(`
@@ -141,5 +139,29 @@ function render_products(products){
         console.log(element.url_name)
       
     });
+}
+
+function render_10_products(products){
+
+
+    for(let i = 0; i < 10; i++){
+        $("#product_cards_here").append(`
+        <div class="card text-center product-card mx-auto">
+            <div class="card-body text-center">
+                <h5>${products[i].name}</h5>
+                <p>${products[i].price}</p>
+                <p>${products[i].local}</p>
+          
+                <img class="product-image" src="${products[i].image}">
+            </div>
+            <br>
+            <script async defer crossorigin="anonymous" src="https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v4.0"></script>
+            <div class="fb-like" data-href="https://tobara.co/${products[i].url_name}" data-width="200" data-layout="box_count" data-action="recommend" data-size="small" data-show-faces="true" data-share="false"></div>
+            <div class="fb-comments" data-href="https://www.tobara.co/${products[i].url_name}" data-width="200" data-numposts="5"></div>
+            <br>
+        </div>
+        <br>
+    `)
+    }
 }
 
