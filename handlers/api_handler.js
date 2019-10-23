@@ -13,7 +13,6 @@ const config = {
     show_n_products: 10
 }
 
-
 const api_handler = {
     dia,
     coto,

@@ -19,8 +19,14 @@ const coto = {
             console.log("page not found");
             return [];
         }
-     
-        await page.waitForSelector(".clearfix");
+        
+        try{
+            await page.waitForSelector(".clearfix");
+        }catch(err){
+            console.log("sleector not found")
+            return [];
+        }
+       
 
         let products_array = await page.evaluate(()=>{
             let products_array = [];

@@ -10,7 +10,7 @@ $("#buscar_btn").click(async function(){
 
     render_supermarkets(config)
 
-    //show loadgin gif 
+    //show loading gif 
     $("#loading").show();
     $("#product_cards_here").empty();
 
@@ -29,7 +29,13 @@ $("#buscar_btn").click(async function(){
             "border-bottom-width":"3px", 
             "border-bottom-style":"solid"
         });
-        dia = await dia_products(product);
+        try{
+            dia = await dia_products(product);
+        }catch(err){
+            console.log(err);
+            dia = [];
+        }
+      
     } 
 
     if(config.supermarkets.coto === true){
@@ -38,7 +44,13 @@ $("#buscar_btn").click(async function(){
             "border-bottom-width":"3px", 
             "border-bottom-style":"solid"
         });
-        coto = await coto_products(product);
+        try{
+            coto = await coto_products(product);
+        }catch(err){
+            console.log(err)
+            coto = [];
+        }
+ 
     } 
 
     if(config.supermarkets.disco === true){
@@ -47,7 +59,13 @@ $("#buscar_btn").click(async function(){
             "border-bottom-width":"3px", 
             "border-bottom-style":"solid"
         });
-        disco = await disco_products(product);
+        try{
+            disco = await disco_products(product);
+        }catch(err){
+            console.log("error"),
+            disco = [];
+        }
+       
     } 
 
 
@@ -78,6 +96,15 @@ $("#buscar_btn").click(async function(){
     $("#input_product").val("");
     $("#loading").hide();
     $(this).attr("disabled", false);
+    $("#pending_dia").css({
+        "border-bottom": "none"
+    });
+    $("#pending_coto").css({
+        "border-bottom": "none"
+    });
+    $("#pending_disco").css({
+        "border-bottom": "none"
+    });
 })
 
 
@@ -133,21 +160,17 @@ async function disco_products(product){
             console.log("DISCO>>");
             console.log(res)
             let product = res;
-            /*
-            $("#loading").hide();
-            render_products(product);
-            $(this).attr("disabled", false)
-            */
            $("#found_disco").show()
            $("#pending_disco").hide();
            return product
         },
         error: function(res){
             console.log("Error");
-            let prod = [];
-            return prod;
+            console.log(res);
+            return [];
         }
     })
+
     console.log("prod: ", products);
     return products
 }
@@ -183,8 +206,6 @@ function render_products(products){
 }
 
 function render_n_products(products){
-
-
     for(let i = 0; i < config.show_n_products; i++){
         $("#product_cards_here").append(`
         <div class="card text-center product-card mx-auto">
@@ -203,7 +224,7 @@ function render_n_products(products){
             <br>
         </div>
         <br>
-    `)
+    `);
     }
 }
 
