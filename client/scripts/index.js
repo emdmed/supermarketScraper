@@ -23,20 +23,18 @@ $("#buscar_btn").click(async function(){
     let disco;
 
 
-
     if(config.supermarkets.dia === true){
         $("#pending_dia").css({
-            "border-bottom-color": "black", 
+            "border-bottom-color": "grey", 
             "border-bottom-width":"3px", 
             "border-bottom-style":"solid"
         });
         dia = await dia_products(product);
- 
     } 
 
     if(config.supermarkets.coto === true){
         $("#pending_coto").css({
-            "border-bottom-color": "black", 
+            "border-bottom-color": "grey", 
             "border-bottom-width":"3px", 
             "border-bottom-style":"solid"
         });
@@ -45,20 +43,15 @@ $("#buscar_btn").click(async function(){
 
     if(config.supermarkets.disco === true){
         $("#pending_disco").css({
-            "border-bottom-color": "black", 
+            "border-bottom-color": "grey", 
             "border-bottom-width":"3px", 
             "border-bottom-style":"solid"
         });
         disco = await disco_products(product);
     } 
 
-    /*
-    let dia = await dia_products(product);
-    let coto = await coto_products(product);
-    let disco = await disco_products(product);
-    */
 
-
+    //push responses to all_products
     if(config.supermarkets.dia === true){
         for(let d = 0; d < dia.length; d++){
             all_products.push(dia[d]);
@@ -82,6 +75,7 @@ $("#buscar_btn").click(async function(){
 
     render_n_products(ordered_products);
 
+    $("#input_product").val("");
     $("#loading").hide();
     $(this).attr("disabled", false);
 })
@@ -194,11 +188,12 @@ function render_n_products(products){
     for(let i = 0; i < config.show_n_products; i++){
         $("#product_cards_here").append(`
         <div class="card text-center product-card mx-auto">
-            <div class="card-body text-center">
+            <div class="card-header">
                 <h5>${products[i].name}</h5>
-                <p>${products[i].price}</p>
+                <h5 class="font-weight-bold">${products[i].price}</h5>
+            </div>
+            <div class="card-body text-center">
                 <p>${products[i].local}</p>
-          
                 <img class="product-image" src="${products[i].image}">
             </div>
             <br>
