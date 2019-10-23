@@ -14,6 +14,12 @@ console.log("Server running...")
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
+app.get("/config", function(req, res){
+
+    res.send(api_handler.config).status(200).end();
+
+});
+
 
 app.post("/products_dia", async function(req, res){
 
@@ -52,17 +58,14 @@ app.post("/products_coto", async function(req, res){
 
 app.post("/products_disco", async function(req, res){
 
+    console.log("disco request")
+
     let product = req.body.product;
     let disco;
 
     try{
         disco = await api_handler.disco.get_products(product);
         await disco;
-
-        if(disco === "timeout"){
-            res.status(200).send("timeout").end();
-        }
-
         //console.log(disco);
         res.status(200).send(disco).end();
     }catch(err){

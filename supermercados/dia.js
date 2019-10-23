@@ -11,7 +11,9 @@ const dia = {
                     headless: true,
                     args: ['--no-sandbox', '--disable-setuid-sandbox'],
                 });
+                
                 const page = await browser.newPage();
+
                 await page.goto(url+product);
                 await page.waitForSelector(".product");
     

@@ -24,8 +24,8 @@ const disco = {
                     altitude: null,
                     altitudeAccuracy: null,
                     heading: null,
-                    latitude: 23.129163,
-                    longitude: 113.264435,
+                    latitude: -34.583191,
+                    longitude: -58.473493,
                     speed: null
                   }
                 })
@@ -35,7 +35,7 @@ const disco = {
              
         await page.goto(url+product);
   
-        await page.waitForSelector("#product-list");
+        //await page.waitForSelector("#product-list");
         await page.waitForSelector(".grilla-producto-container");
 
         let products_array = await page.evaluate(()=>{

@@ -1,3 +1,6 @@
+var config;
+
+
 $("#buscar_btn").click(async function(){
     let product = $("#input_product").val();
 
@@ -5,9 +8,7 @@ $("#buscar_btn").click(async function(){
     $("#found_dia").hide()
     $("#found_disco").hide()
 
-    $("#pending_dia").show();
-    $("#pending_coto").show();
-    $("#pending_disco").show();
+    render_supermarkets(config)
 
     //show loadgin gif 
     $("#loading").show();
@@ -17,26 +18,48 @@ $("#buscar_btn").click(async function(){
     $(this).attr("disabled", true)
 
     let all_products = [];
+    let dia;
+    let coto;
+    let disco;
+
+
+
+    if(config.supermarkets.dia === true){
+        dia = await dia_products(product);
+    } 
+
+    if(config.supermarkets.coto === true){
+        coto = await coto_products(product);
+    } 
+
+    if(config.supermarkets.disco === true){
+        disco = await disco_products(product);
+    } 
+
+    /*
     let dia = await dia_products(product);
     let coto = await coto_products(product);
     let disco = await disco_products(product);
+    */
 
-    if (dia === "timeout" || coto === "timeout" || disco === "timeout"){
 
-    } else {
-
+    if(config.supermarkets.dia === true){
         for(let d = 0; d < dia.length; d++){
             all_products.push(dia[d]);
         }
-    
+    } 
+
+    if(config.supermarkets.coto === true){
         for(let c = 0; c < coto.length; c++){
             all_products.push(coto[c]);
         }
-    
+    } 
+
+    if(config.supermarkets.disco === true){
         for(let i = 0; i < disco.length; i++){
             all_products.push(disco[i]);
         }
-    }
+    } 
 
     //order items by price
     let ordered_products = all_products.sort((a, b) => (a.int_price > b.int_price) ? 1 : -1)
@@ -47,8 +70,9 @@ $("#buscar_btn").click(async function(){
     $(this).attr("disabled", false);
 })
 
+
 async function dia_products(product){
-    let products = $.ajax({
+    let products =  await $.ajax({
         url: "/products_dia",
         method: "POST",
         data: {product: product},
@@ -68,7 +92,7 @@ async function dia_products(product){
 }
 
 async function coto_products(product){
-    let products = $.ajax({
+    let products = await $.ajax({
         url: "/products_coto",
         method: "POST",
         data: {product: product},
@@ -90,7 +114,8 @@ async function coto_products(product){
 }
 
 async function disco_products(product){
-    let products = $.ajax({
+    console.log("request disco")
+    let products =  await $.ajax({
         url: "/products_disco",
         method: "POST",
         data: {product: product},
@@ -106,8 +131,14 @@ async function disco_products(product){
            $("#found_disco").show()
            $("#pending_disco").hide();
            return product
+        },
+        error: function(res){
+            console.log("Error");
+            let prod = [];
+            return prod;
         }
     })
+    console.log("prod: ", products);
     return products
 }
 
@@ -162,6 +193,40 @@ function render_10_products(products){
         </div>
         <br>
     `)
+    }
+}
+
+
+function onload(){
+    $.ajax({
+        url: "/config",
+        method: "GET",
+        success: function(res){
+            config = res;
+            render_supermarkets(config);
+            console.log("connected...")
+            $("#buscar_btn").attr("disabled", false);
+        }
+    })
+}
+
+function render_supermarkets(config){
+    if(config.supermarkets.dia === false){
+        $("#pending_dia").hide();
+    } else {
+        $("#pending_dia").show();
+    }
+
+    if(config.supermarkets.coto === false){
+        $("#pending_coto").hide();
+    } else {
+        $("#pending_coto").show();
+    }
+
+    if(config.supermarkets.disco === false){
+        $("#pending_disco").hide();
+    } else {
+        $("#pending_coto").show();
     }
 }
 

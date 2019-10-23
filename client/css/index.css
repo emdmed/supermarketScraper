@@ -20,12 +20,13 @@ body{
 
     #loading_gif{
             width: 20%;
+            height: 50px;
     }
 
     #loading_image{
        position: relative;
        width: 30%;
-       
+
        margin-top: 50px;
        margin-bottom: 10px;
     }

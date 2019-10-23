@@ -28,7 +28,7 @@
     <meta property="og:description"   content="Encontrá los precios mas baratos de la galaxia"/>
     <meta property="og:image"         content="https://www.tobara.co/client/images/milky-way-2695569_1920.jpg"/>
 </head>
-<body >
+<body onload="onload()" >
     <div id="fb-root"></div>
     <!--<script async defer crossorigin="anonymous" src="https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v4.0"></script>-->
 
@@ -39,7 +39,7 @@
         <div class="input-group mb-3 mx-auto" id="search_bar">
             <input type="text" class="form-control" aria-label="Recipient's username" aria-describedby="button-addon2" placeholder="Buscar producto..." id="input_product">
             <div class="input-group-append">
-                <button class="btn btn-secondary" type="button" id="buscar_btn">Buscar</button>
+                <button class="btn btn-secondary" type="button" id="buscar_btn" disabled>Buscar</button>
             </div>
         </div>
     </div>
@@ -77,7 +77,6 @@
         <img id="loading_image" src="./images/food-basket.png">
         <h3 class="bold">Buscando...</h3>
         <p>Esto puede llevar algunos segundos</p>
-        <br>
         <img id="loading_gif" src="./images/Ellipsis-1s-200px.gif">
 
     </div>
