@@ -211,6 +211,7 @@ function onload(){
 }
 
 function render_supermarkets(config){
+
     if(config.supermarkets.dia === false){
         $("#pending_dia").hide();
     } else {
@@ -228,5 +229,6 @@ function render_supermarkets(config){
     } else {
         $("#pending_coto").show();
     }
+    
 }
 
