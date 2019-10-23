@@ -7,6 +7,7 @@ $("#buscar_btn").click(async function(){
     $("#found_coto").hide()
     $("#found_dia").hide()
     $("#found_disco").hide()
+    $("#found_jumbo").hide()
 
     render_supermarkets(config)
 
@@ -124,6 +125,9 @@ $("#buscar_btn").click(async function(){
     $("#pending_disco").css({
         "border-bottom": "none"
     });
+    $("#pending_jumbo").css({
+        "border-bottom": "none"
+    });
 })
 
 
@@ -198,8 +202,8 @@ async function jumbo_products(product){
             console.log("JUMBO>>");
             console.log(res)
             let product = res;
-           $("#found_coto").show()
-           $("#pending_coto").hide();
+           $("#found_jumbo").show()
+           $("#pending_jumbo").hide();
            return product
         }
     })
@@ -290,7 +294,7 @@ function render_supermarkets(config){
     if(config.supermarkets.disco === false){
         $("#pending_disco").hide();
     } else {
-        $("#pending_coto").show();
+        $("#pending_disco").show();
     }
 
     if(config.supermarkets.jumbo === false){

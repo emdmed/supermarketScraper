@@ -55,7 +55,7 @@ const jumbo = {
                         url_name
                     }
 
-                    console.log(item);
+                    //console.log(item);
                     filter_undefined(item, products);
                 }
                 

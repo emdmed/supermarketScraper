@@ -42,10 +42,18 @@ const disco = {
                 for(let p = 0; p < products_array.length; p++){
                     let $ = cheerio.load(products_array[p]);
     
-                    let price = $(".grilla-producto-precio").text();
-                    let span = $(".grilla-producto-precio").find("span");
+                    /*let full = $(".grilla-producto-precio").text();
+                    let cents = $(".grilla-producto-precio").find("span").text();
+                    let pre_final = full.replace(cents, "") + "," + cents
+                    let final = pre_final.replace(/ /g,'');*/
+                    let _price = $(".grilla-producto-precio").text();
+
+                    let span = $(".grilla-producto-precio").find("span").text();
+                    let price = _price.replace(span, "") + "," + span
                     let int_price = parseFloat(remove_sign = price.replace("$", "").replace(",", "."));
-                    let url_name = $(".grilla-producto-precio").text().replace(/ /g, "_");
+                    let url_name = $(".grilla-producto-descripcion").text().replace(/ /g, "_");
+
+                    //console.log(int_price, url_name);
     
                     let item = {
                         name: $(".grilla-producto-descripcion").text().replace(/(\r\n|\n|\r|\t)/gm, ""),
@@ -56,7 +64,7 @@ const disco = {
                         url_name
                     }
 
-                    console.log(item);
+               
                     filter_undefined(item, products);
                 }
                 
@@ -66,7 +74,7 @@ const disco = {
 }
 
 function filter_undefined(item, products){
-    if(item.name === undefined || item.name === "" || item.price === undefined ||item.price === "$undefined"){
+    if(item.name === undefined || item.name === "" || item.price === undefined ||item.price === "$undefined" || isNaN(item.int_price) === true){
         //console.log("undefined product price or name")
     } else {
         products.push(item);

@@ -7,10 +7,10 @@ const jumbo = require("../supermercados/jumbo");
 
 const config = {
     supermarkets: {
-        dia: false,
-        coto: false,
+        dia: true,
+        coto: true,
         disco: true,
-        jumbo: false
+        jumbo: true
     },
     show_n_products: 10
 }
