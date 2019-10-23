@@ -55,6 +55,23 @@ app.post("/products_coto", async function(req, res){
 
 })
 
+app.post("/products_jumbo", async function(req, res){
+
+    let product = req.body.product;
+    let jumbo;
+
+    try{
+        jumbo = await api_handler.jumbo.get_products(product);
+        await jumbo;
+        res.status(200).send(jumbo).end();
+    }catch(err){
+        console.log(err);
+        res.status(404).end();
+    }
+    
+
+})
+
 
 app.post("/products_disco", async function(req, res){
 
@@ -72,7 +89,6 @@ app.post("/products_disco", async function(req, res){
         //console.log(err);
         res.status(404).end();
     }
-    
 
 })
 

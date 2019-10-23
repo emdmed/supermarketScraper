@@ -21,6 +21,7 @@ $("#buscar_btn").click(async function(){
     let dia;
     let coto;
     let disco;
+    let jumbo;
 
 
     if(config.supermarkets.dia === true){
@@ -50,7 +51,6 @@ $("#buscar_btn").click(async function(){
             console.log(err)
             coto = [];
         }
- 
     } 
 
     if(config.supermarkets.disco === true){
@@ -65,7 +65,20 @@ $("#buscar_btn").click(async function(){
             console.log("error"),
             disco = [];
         }
-       
+    } 
+
+    if(config.supermarkets.jumbo === true){
+        $("#pending_jumbo").css({
+            "border-bottom-color": "grey", 
+            "border-bottom-width":"3px", 
+            "border-bottom-style":"solid"
+        });
+        try{
+            jumbo = await jumbo_products(product);
+        }catch(err){
+            console.log(err)
+            jumbo = [];
+        }
     } 
 
 
@@ -85,6 +98,12 @@ $("#buscar_btn").click(async function(){
     if(config.supermarkets.disco === true){
         for(let i = 0; i < disco.length; i++){
             all_products.push(disco[i]);
+        }
+    } 
+
+    if(config.supermarkets.jumbo === true){
+        for(let i = 0; i < jumbo.length; i++){
+            all_products.push(jumbo[i]);
         }
     } 
 
@@ -137,11 +156,6 @@ async function coto_products(product){
             console.log("COTO>>");
             console.log(res)
             let product = res;
-            /*
-            $("#loading").hide();
-            render_products(product);
-            $(this).attr("disabled", false)
-            */
            $("#found_coto").show()
            $("#pending_coto").hide();
            return product
@@ -172,6 +186,23 @@ async function disco_products(product){
     })
 
     console.log("prod: ", products);
+    return products
+}
+
+async function jumbo_products(product){
+    let products = await $.ajax({
+        url: "/products_jumbo",
+        method: "POST",
+        data: {product: product},
+        success: function(res){
+            console.log("JUMBO>>");
+            console.log(res)
+            let product = res;
+           $("#found_coto").show()
+           $("#pending_coto").hide();
+           return product
+        }
+    })
     return products
 }
 
@@ -260,6 +291,12 @@ function render_supermarkets(config){
         $("#pending_disco").hide();
     } else {
         $("#pending_coto").show();
+    }
+
+    if(config.supermarkets.jumbo === false){
+        $("#pending_jumbo").hide();
+    } else {
+        $("#pending_jumbo").show();
     }
 
 }

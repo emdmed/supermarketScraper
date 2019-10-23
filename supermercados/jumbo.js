@@ -1,9 +1,9 @@
 const puppeteer = require("puppeteer");
 const cheerio = require("cheerio");
 
-const disco = {
+const jumbo = {
     get_products: async function(product){
-        url = "https://www.disco.com.ar/Comprar/Home.aspx#_atCategory=false&_atGrilla=true&_query=";
+        url = "https://www.jumbo.com.ar/busca/?ft=";
                 let products = [];
 
                 //Boot Pupeteer
@@ -22,15 +22,15 @@ const disco = {
                 }
 
                 try{
-                    await page.waitForSelector(".grilla-producto-container");
+                    await page.waitForSelector(".product-item");
                 } catch(err){
-                    console.log("selector not found")
+                    console.log("not found")
                     return [];
                 }
                           
                 let products_array = await page.evaluate(()=>{
                     let products_array = [];
-                    let all_products = document.querySelectorAll(".grilla-producto-container")
+                    let all_products = document.querySelectorAll(".product-item")
                     for(let i = 0; i < all_products.length; i++){
                         products_array.push(all_products[i].innerHTML);
                     }
@@ -42,17 +42,16 @@ const disco = {
                 for(let p = 0; p < products_array.length; p++){
                     let $ = cheerio.load(products_array[p]);
     
-                    let price = $(".grilla-producto-precio").text();
-                    let span = $(".grilla-producto-precio").find("span");
+                    let price = $(".product-prices__value").text();
                     let int_price = parseFloat(remove_sign = price.replace("$", "").replace(",", "."));
-                    let url_name = $(".grilla-producto-precio").text().replace(/ /g, "_");
+                    let url_name = $(".product-prices__value.product-prices__value--best-price").text().replace(/ /g, "_");
     
                     let item = {
-                        name: $(".grilla-producto-descripcion").text().replace(/(\r\n|\n|\r|\t)/gm, ""),
+                        name: $(".product-item__name").find("a").text().replace(/(\r\n|\n|\r|\t)/gm, ""),
                         price,
-                        image: $(".grilla-producto-imagen").find("img").attr("data-original"),
+                        image: $(".product-item__image-link").find("img").attr("src"),
                         int_price: int_price,
-                        local: "Supermercado disco",
+                        local: "Supermercado Jumbo",
                         url_name
                     }
 
@@ -73,4 +72,4 @@ function filter_undefined(item, products){
     }
 }
 
-module.exports = disco;
+module.exports = jumbo;

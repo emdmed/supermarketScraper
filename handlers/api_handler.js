@@ -3,12 +3,14 @@ const cheerio = require("cheerio");
 const dia = require("../supermercados/dia");
 const coto = require("../supermercados/coto");
 const disco = require("../supermercados/disco");
+const jumbo = require("../supermercados/jumbo");
 
 const config = {
     supermarkets: {
-        dia: true,
-        coto: true,
-        disco: false
+        dia: false,
+        coto: false,
+        disco: true,
+        jumbo: false
     },
     show_n_products: 10
 }
@@ -17,6 +19,7 @@ const api_handler = {
     dia,
     coto,
     disco,
+    jumbo,
     config
 }
 
