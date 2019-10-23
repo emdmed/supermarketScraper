@@ -14,9 +14,20 @@ const dia = {
                 
                 const page = await browser.newPage();
 
-                await page.goto(url+product);
-                await page.waitForSelector(".product");
-    
+                try{
+                    await page.goto(url+product);
+                }catch(err){
+                    console.log("page not found");
+                    return [];
+                }
+
+                try{
+                    await page.waitForSelector(".product");
+                } catch(err){
+                    console.log("not found")
+                    return [];
+                }
+                          
                 let products_array = await page.evaluate(()=>{
                     let products_array = [];
                     let all_products = document.querySelectorAll(".product")

@@ -25,14 +25,30 @@ $("#buscar_btn").click(async function(){
 
 
     if(config.supermarkets.dia === true){
+        $("#pending_dia").css({
+            "border-bottom-color": "black", 
+            "border-bottom-width":"3px", 
+            "border-bottom-style":"solid"
+        });
         dia = await dia_products(product);
+ 
     } 
 
     if(config.supermarkets.coto === true){
+        $("#pending_coto").css({
+            "border-bottom-color": "black", 
+            "border-bottom-width":"3px", 
+            "border-bottom-style":"solid"
+        });
         coto = await coto_products(product);
     } 
 
     if(config.supermarkets.disco === true){
+        $("#pending_disco").css({
+            "border-bottom-color": "black", 
+            "border-bottom-width":"3px", 
+            "border-bottom-style":"solid"
+        });
         disco = await disco_products(product);
     } 
 
@@ -64,7 +80,7 @@ $("#buscar_btn").click(async function(){
     //order items by price
     let ordered_products = all_products.sort((a, b) => (a.int_price > b.int_price) ? 1 : -1)
 
-    render_10_products(ordered_products);
+    render_n_products(ordered_products);
 
     $("#loading").hide();
     $(this).attr("disabled", false);
@@ -172,10 +188,10 @@ function render_products(products){
     });
 }
 
-function render_10_products(products){
+function render_n_products(products){
 
 
-    for(let i = 0; i < 10; i++){
+    for(let i = 0; i < config.show_n_products; i++){
         $("#product_cards_here").append(`
         <div class="card text-center product-card mx-auto">
             <div class="card-body text-center">
@@ -229,6 +245,6 @@ function render_supermarkets(config){
     } else {
         $("#pending_coto").show();
     }
-    
+
 }
 

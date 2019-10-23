@@ -33,7 +33,12 @@ const disco = {
             }
           });
              
-        await page.goto(url+product);
+        try{
+            await page.goto(url+product);
+        }catch(err){
+            console.log("page not found");
+            return [];
+        }
   
         //await page.waitForSelector("#product-list");
         await page.waitForSelector(".grilla-producto-container");

@@ -12,7 +12,14 @@ const coto = {
         });
         
         const page = await browser.newPage();
-        await page.goto(url+product);
+
+        try{
+            await page.goto(url+product);
+        }catch(err){
+            console.log("page not found");
+            return [];
+        }
+     
         await page.waitForSelector(".clearfix");
 
         let products_array = await page.evaluate(()=>{

@@ -9,7 +9,8 @@ const config = {
         dia: true,
         coto: true,
         disco: false
-    }
+    },
+    show_n_products: 10
 }
 
 
