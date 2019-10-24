@@ -18,6 +18,12 @@ body{
         color: white;
     }
 
+    #logo{
+        position: relative;
+        height: 90px;
+        top: 10px;
+    }
+
     #loading_gif{
             width: 20%;
             height: 50px;
@@ -56,11 +62,18 @@ body{
         padding-bottom: 20px;
     }
 }
+
 /*Desktop*/
 @media only screen and (min-width: 900px) {
     .product-image{
         position: relative;
         width: 40%;
+    }
+
+    #logo{
+        position: relative;
+        height: 200px;
+        top: 10px;
     }
 
     #top_container{
